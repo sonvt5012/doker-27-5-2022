@@ -9,17 +9,16 @@ services:
     env_file:
       - .docker.env
     volumes:
-      - ${PROJECT_WORKSPACE_PATH}:/var/www/
+      - ${PHP_PROJECT_WORKSPACE_PATH}:/var/www/
     networks:
       - stringee
-
   node-workspace:
     container_name: node-workspace
     build:
       context: ./node
       dockerfile: Dockerfile
     volumes:
-      - ${PROJECT_WORKSPACE_PATH}:/app
+      - ${VUE_PROJECT_WORKSPACE_PATH}:/app
     ports:
       - 3000:3000
       - 3001:3001
@@ -29,14 +28,13 @@ services:
     tty: true
     networks:
       - stringee
-
   nginx:
     container_name: nginx
     build:
       context: ./nginx
       dockerfile: Dockerfile
     volumes:
-      - ${PROJECT_WORKSPACE_PATH}:/var/www/
+      - ${PHP_PROJECT_WORKSPACE_PATH}:/var/www/
       - ./nginx/sites:/etc/nginx/sites-available/
     ports:
       - 80:80

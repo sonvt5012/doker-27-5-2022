@@ -20,7 +20,9 @@ RUN set -eux; \
     docker-php-ext-install \
         zip \
         gd \
-        bcmath
+        bcmath \
+        sockets \
+        mysqli
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=2.2.1
 
