@@ -21,6 +21,7 @@ RUN set -eux; \
         zip \
         gd \
         bcmath \
+        pdo_mysql \
         sockets \
         mysqli
 
